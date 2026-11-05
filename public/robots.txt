@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mountvalleyschool.edu.in/sitemap.xml
+
