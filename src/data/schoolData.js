@@ -6,9 +6,9 @@ export const schoolInfo = {
   logo: "/images/school-logo.png",
   logoOriginal: "/images/school-logo.jpg",
   contact: {
-    address: "Arasamara Thottam, Arumuthampalayam, Palladam Taluk, Tamil Nadu - 641664",
-    phone: "+91 99522 58987",
-    email: "mountvalley21@gmail.com",
+    address: "1/260A, Arasamarathottam, Arumuthampalayam, Palladam Taluk, Tamil Nadu - 641664",
+    phone: "+91 99522 58987 / +91 90427 81791",
+    email: "Mountvalley22@gmail.com",
     officeHours: "Monday – Saturday: 8:30 AM – 4:30 PM",
   },
   socials: {

@@ -377,7 +377,7 @@ export default function Contact() {
                 <div className="w-full h-[260px] rounded-[12px] overflow-hidden border border-slate-200/90 shadow-sm relative bg-slate-100">
                   <iframe
                     title="Mount Valley Public School Location Map"
-                    src="https://maps.google.com/maps?q=Mount+Valley+Public+School,+Arasamara+Thottam,+Arumuthampalayam,+Palladam,+Tamil+Nadu+641664&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    src="https://maps.google.com/maps?q=Mount+Valley+Public+School,+1/260A,+Arasamarathottam,+Arumuthampalayam,+Palladam,+Tamil+Nadu+641664&t=&z=15&ie=UTF8&iwloc=&output=embed"
                     className="w-full h-full border-0"
                     loading="lazy"
                     allowFullScreen
@@ -389,7 +389,7 @@ export default function Contact() {
                 <div className="mt-3 flex items-center justify-between text-xs">
                   <span className="text-slate-500">Palladam, Tamil Nadu</span>
                   <a
-                    href="https://www.google.com/maps/dir/?api=1&destination=Mount+Valley+Public+School,+Arasamara+Thottam,+Arumuthampalayam,+Palladam,+Tamil+Nadu+641664"
+                    href="https://www.google.com/maps/dir/?api=1&destination=Mount+Valley+Public+School,+1/260A,+Arasamarathottam,+Arumuthampalayam,+Palladam,+Tamil+Nadu+641664"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 font-semibold text-brand-600 hover:text-brand-700 transition-colors"

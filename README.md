@@ -47,9 +47,9 @@ npm run preview
 ## 🏫 Official School Information
 
 - **School Name**: Mount Valley Public School
-- **Campus Address**: Arasamara Thottam, Arumuthampalayam, Palladam Taluk, Tamil Nadu - 641664
-- **Phone**: +91 99522 58987
-- **Email**: mountvalley21@gmail.com
+- **Campus Address**: 1/260A, Arasamarathottam, Arumuthampalayam, Palladam Taluk, Tamil Nadu - 641664
+- **Phone**: +91 99522 58987 / +91 90427 81791
+- **Email**: Mountvalley22@gmail.com
 - **Office Hours**: Monday – Saturday: 8:30 AM – 4:30 PM
 
 ## 📁 Pages Included
@@ -61,3 +61,4 @@ npm run preview
 5. **Gallery (`/gallery`)**: All 7 authentic school photographs with category filtering and an interactive keyboard-navigable Lightbox modal.
 6. **Admissions (`/admissions`)**: 4-step admission guide, document checklist, and interactive enquiry form with client-side validation.
 7. **Contact Us (`/contact`)**: Campus office details, interactive Google Maps embed with turn-by-turn directions link, and direct contact form.
+
