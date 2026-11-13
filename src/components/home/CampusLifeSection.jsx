@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, HeartHandshake, Lightbulb, Compass } from 'lucide-react';
+import { Sparkles, HeartHandshake, Lightbulb } from 'lucide-react';
 import Button from '../common/Button';
 import ImageReveal from '../common/ImageReveal';
 import { officialImages } from '../../data/schoolData';
@@ -40,27 +40,6 @@ export default function CampusLifeSection() {
                 caption="Mount Valley students actively conducting science experiments under teacher mentorship"
                 className="shadow-soft-lg rounded-2xl"
               />
-
-              {/* Decorative accent card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="hidden sm:flex absolute -bottom-6 -left-6 bg-brand-900 text-white p-5 rounded-xl shadow-soft-lg border border-brand-700/60 max-w-xs z-20 items-center gap-3.5"
-              >
-                <div className="w-10 h-10 rounded-lg bg-brand-500 text-white flex items-center justify-center shrink-0">
-                  <Compass className="w-5 h-5" />
-                </div>
-                <div>
-                  <span className="block text-xs uppercase tracking-wider text-brand-300 font-semibold">
-                    Experiential Learning
-                  </span>
-                  <span className="block text-sm font-bold text-white">
-                    Practical Understanding Daily
-                  </span>
-                </div>
-              </motion.div>
             </div>
           </div>
 

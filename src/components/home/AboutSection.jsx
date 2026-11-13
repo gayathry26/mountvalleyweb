@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, Award, Sparkles } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import Button from '../common/Button';
 import ImageReveal from '../common/ImageReveal';
 import { officialImages } from '../../data/schoolData';
@@ -32,27 +32,6 @@ export default function AboutSection() {
                 caption="Main entrance gate welcoming students to Mount Valley Public School"
                 className="shadow-soft-lg rounded-2xl"
               />
-
-              {/* Institutional badge floating overlay */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.35, duration: 0.6 }}
-                className="absolute -bottom-6 -right-4 sm:-bottom-8 sm:right-6 bg-white p-4 sm:p-5 rounded-xl shadow-soft-lg border border-brand-100 flex items-center gap-3.5 z-20"
-              >
-                <div className="w-12 h-12 rounded-lg bg-brand-500 text-white flex items-center justify-center shrink-0">
-                  <Award className="w-6 h-6" />
-                </div>
-                <div>
-                  <span className="block text-xs uppercase tracking-wider text-slate-500 font-semibold">
-                    Our Commitment
-                  </span>
-                  <span className="block text-sm sm:text-base font-bold text-slate-900">
-                    Excellence in Education
-                  </span>
-                </div>
-              </motion.div>
             </div>
           </div>
 

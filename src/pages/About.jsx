@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Eye, Target, Compass, BookOpen, ShieldCheck, Award, Heart, CheckCircle2 } from 'lucide-react';
+import { Eye, Target, Compass, BookOpen, ShieldCheck, Heart, CheckCircle2 } from 'lucide-react';
 import PageHeader from '../components/common/PageHeader';
 import SEO from '../components/common/SEO';
 import ImageReveal from '../components/common/ImageReveal';
@@ -64,18 +64,6 @@ export default function About() {
                   caption="Grand entrance gate of Mount Valley Public School"
                   className="shadow-soft-lg rounded-2xl"
                 />
-
-                <div className="hidden sm:block absolute -bottom-6 -right-6 bg-slate-900 text-white p-5 rounded-xl shadow-soft-lg max-w-xs border border-slate-800">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-brand-500 flex items-center justify-center shrink-0">
-                      <Award className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <span className="block text-xs uppercase tracking-wider text-slate-400 font-semibold">Institutional Spirit</span>
-                      <span className="block text-sm font-bold text-white">Integrity & Excellence</span>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
 
