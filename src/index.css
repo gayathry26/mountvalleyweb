@@ -63,6 +63,27 @@
   background: #079fa8;
 }
 
+/* Continuous Horizontal Marquee */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-scroll {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 45s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-scroll:hover {
+  animation-play-state: paused;
+}
+
 /* Reduced motion accessibility support */
 @media (prefers-reduced-motion: reduce) {
   *,

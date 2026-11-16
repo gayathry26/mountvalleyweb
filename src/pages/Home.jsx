@@ -4,6 +4,7 @@ import AboutSection from '../components/home/AboutSection';
 import WhyChooseSection from '../components/home/WhyChooseSection';
 import AcademicEnvironmentSection from '../components/home/AcademicEnvironmentSection';
 import InfrastructureSection from '../components/home/InfrastructureSection';
+import LifeAtMountValleySection from '../components/home/LifeAtMountValleySection';
 import CampusLifeSection from '../components/home/CampusLifeSection';
 import AdmissionsCTA from '../components/home/AdmissionsCTA';
 import SEO from '../components/common/SEO';
@@ -30,6 +31,9 @@ export default function Home({ introFinished = true }) {
 
       {/* Section 6: Infrastructure */}
       <InfrastructureSection />
+
+      {/* Continuous Horizontal Scrolling Section: Life at Mount Valley */}
+      <LifeAtMountValleySection />
 
       {/* Section 7: Campus Life */}
       <CampusLifeSection />
