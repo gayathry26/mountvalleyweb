@@ -1,54 +1,44 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Sparkles, Building2, BookOpen, FlaskConical, Atom, Users2, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Atom, FlaskConical, Microscope, CheckCircle2, Maximize2, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import PageHeader from '../components/common/PageHeader';
 import SEO from '../components/common/SEO';
 import ImageReveal from '../components/common/ImageReveal';
 import SectionHeading from '../components/common/SectionHeading';
 import Button from '../components/common/Button';
 import AdmissionsCTA from '../components/home/AdmissionsCTA';
-import { officialImages } from '../data/schoolData';
+import { officialImages, laboratoryDisciplines } from '../data/schoolData';
 
 export default function CampusLife() {
-  const labShowcase = [
-    {
-      title: "Science & Chemistry Laboratory",
-      badge: "Chemical Sciences",
-      icon: FlaskConical,
-      image: officialImages.scienceLabInterior.src,
-      alt: officialImages.scienceLabInterior.alt,
-      description: "Our chemistry and science laboratory features smooth acid-resistant granite counter tables, integrated reagent racks, gas burners, glassware, and burette stands. Teachers guide students through standard chemical tests and qualitative analysis with strict safety protocols.",
-      equipment: ["Granite workstation benches", "Glassware & reagent shelves", "Burette & titration stands", "Safety wash stations"]
-    },
-    {
-      title: "Physics Experimental Laboratory",
-      badge: "Physical Sciences",
-      icon: Atom,
-      image: officialImages.physicsLab.src,
-      alt: officialImages.physicsLab.alt,
-      description: "Designed specifically for experiments in mechanics, electricity, magnetism, and optics. Equipped with electrical power bench supply units, rheostats, potentiometers, resistance boxes, and optical benches where students verify theoretical formulas empirically.",
-      equipment: ["Regulated electrical power benches", "Rheostats & resistance boxes", "Optical & measurement benches", "Galvanometers & multimeters"]
-    },
-    {
-      title: "Science Laboratory & Practical Facilities",
-      badge: "Natural & Applied Sciences",
-      icon: FlaskConical,
-      image: officialImages.scienceLaboratory.src,
-      alt: officialImages.scienceLaboratory.alt,
-      description: "An open, well-illuminated laboratory facility facilitating collaborative scientific study. Faculty members work alongside learners, demonstrating principles and encouraging students to record data systematically in lab records.",
-      equipment: ["Spacious observation benches", "Natural daylight and ventilation", "Specimen observation trays", "Faculty demonstration desk"]
-    }
-  ];
+  const [fullscreenIndex, setFullscreenIndex] = useState(null);
+
+  const labIcons = {
+    Physics: Atom,
+    Chemistry: FlaskConical,
+    Biology: Microscope,
+  };
+
+  const handlePrev = (e) => {
+    e.stopPropagation();
+    setFullscreenIndex((prev) => (prev > 0 ? prev - 1 : laboratoryDisciplines.length - 1));
+  };
+
+  const handleNext = (e) => {
+    e.stopPropagation();
+    setFullscreenIndex((prev) => (prev < laboratoryDisciplines.length - 1 ? prev + 1 : 0));
+  };
+
+  const activeLab = fullscreenIndex !== null ? laboratoryDisciplines[fullscreenIndex] : null;
 
   return (
     <>
       <SEO
-        title="Campus Life & Infrastructure"
-        description="Experience campus life at Mount Valley Public School: explore our modern school building, interactive classrooms, and fully equipped physics & chemistry laboratories."
+        title="Campus Life & Laboratory Facilities"
+        description="Experience campus life at Mount Valley Public School: explore our modern school building, interactive classrooms, and fully equipped Physics, Chemistry, and Biology laboratories."
       />
 
       <PageHeader
-        title="Campus Life & Infrastructure"
+        title="Campus Life & Facilities"
         subtitle="A vibrant, supportive educational campus designed to foster academic inquiry, experimental discovery, and healthy student development."
         breadcrumb={[{ name: "Campus Life" }]}
       />
@@ -184,37 +174,49 @@ export default function CampusLife() {
         </div>
       </section>
 
-      {/* Section 3: Laboratory Facilities Showcase (Detailed presentation) */}
+      {/* Section 3: Dedicated Laboratories Showcase (Physics, Chemistry, Biology) */}
       <section className="section-padding bg-slate-900 text-white relative overflow-hidden">
         <div className="container-custom relative z-10">
           <SectionHeading
-            badge="Infrastructure Showcase"
-            title="Dedicated Experimental Laboratories"
-            subtitle="Explore our specialized physics, chemistry, and science laboratory spaces engineered for active student observation."
+            badge="Practical Infrastructure"
+            title="Physics, Chemistry & Biology Laboratories"
+            subtitle="Explore our three specialized laboratory environments, each furnished with discipline-specific experimental apparatus for student practice."
             align="center"
             theme="dark"
           />
 
           <div className="space-y-16 lg:space-y-24 mt-12">
-            {labShowcase.map((lab, idx) => {
+            {laboratoryDisciplines.map((lab, idx) => {
               const isEven = idx % 2 === 0;
-              const Icon = lab.icon;
+              const Icon = labIcons[lab.discipline] || FlaskConical;
               return (
                 <div
-                  key={idx}
+                  key={lab.discipline}
                   className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center"
                 >
-                  {/* Image Column */}
+                  {/* Image Column with Click for Fullscreen */}
                   <div className={`lg:col-span-7 ${isEven ? 'order-1' : 'order-1 lg:order-2'}`}>
-                    <ImageReveal
-                      src={lab.image}
-                      alt={lab.alt}
-                      direction={isEven ? 'left' : 'right'}
-                      aspectRatio="aspect-[16/10]"
-                      badge={lab.badge}
-                      caption={lab.title}
-                      className="shadow-soft-xl rounded-2xl border border-slate-800"
-                    />
+                    <div 
+                      onClick={() => setFullscreenIndex(idx)}
+                      className="cursor-pointer group relative overflow-hidden rounded-2xl border border-slate-800 shadow-soft-xl"
+                    >
+                      <ImageReveal
+                        src={lab.src}
+                        alt={lab.alt}
+                        direction={isEven ? 'left' : 'right'}
+                        aspectRatio="aspect-[16/10]"
+                        badge={lab.badge}
+                        caption={`${lab.title} — Click to view fullscreen`}
+                        className="shadow-soft-xl rounded-2xl border border-slate-800"
+                      />
+
+                      <div className="absolute top-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/20 backdrop-blur-md text-white border border-white/30 hover:bg-white hover:text-slate-900 transition-colors">
+                          <Maximize2 className="w-3.5 h-3.5" />
+                          <span>Fullscreen</span>
+                        </span>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Content Column */}
@@ -227,7 +229,7 @@ export default function CampusLife() {
                     >
                       <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/20 text-brand-300 text-xs font-semibold uppercase tracking-wider mb-3 border border-brand-400/30">
                         <Icon className="w-3.5 h-3.5" />
-                        <span>{lab.badge}</span>
+                        <span>{lab.discipline} Discipline</span>
                       </div>
 
                       <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
@@ -240,7 +242,7 @@ export default function CampusLife() {
 
                       <div className="space-y-2.5 pt-4 border-t border-slate-800">
                         <span className="text-xs uppercase tracking-wider text-slate-400 font-semibold block mb-2">
-                          Facility Highlights:
+                          Standard Laboratory Setup:
                         </span>
                         {lab.equipment.map((item, eqIdx) => (
                           <div key={eqIdx} className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-300">
@@ -248,6 +250,16 @@ export default function CampusLife() {
                             <span>{item}</span>
                           </div>
                         ))}
+                      </div>
+
+                      <div className="pt-6">
+                        <button
+                          onClick={() => setFullscreenIndex(idx)}
+                          className="inline-flex items-center gap-2 text-xs font-bold text-brand-400 hover:text-brand-300 transition-colors uppercase tracking-wider"
+                        >
+                          <Maximize2 className="w-4 h-4" />
+                          <span>View {lab.discipline} Lab Fullscreen</span>
+                        </button>
                       </div>
                     </motion.div>
                   </div>
@@ -258,20 +270,20 @@ export default function CampusLife() {
         </div>
       </section>
 
-      {/* Section 4: Student Activities in the Laboratory */}
+      {/* Section 4: Student Laboratory Activities (Distinct close-up photograph) */}
       <section className="section-padding bg-white relative">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left: Students Lab Image */}
+            {/* Left: Student Activity Detail Image */}
             <div className="lg:col-span-6">
               <div className="relative mx-auto max-w-lg lg:max-w-none">
                 <ImageReveal
-                  src={officialImages.studentsLab.src}
-                  alt={officialImages.studentsLab.alt}
+                  src="/images/student-lab-activity.jpg"
+                  alt="Students engaged in practical laboratory observations and notes"
                   direction="left"
                   aspectRatio="aspect-[16/10]"
-                  badge="Hands-on Science"
-                  caption="Mount Valley students conducting biology and science experiments with specimen jars and record notebooks"
+                  badge="Hands-on Practice"
+                  caption="Students actively recording laboratory observations and measurements"
                   className="shadow-soft-lg rounded-2xl"
                 />
               </div>
@@ -297,7 +309,7 @@ export default function CampusLife() {
                 </h2>
 
                 <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-6 font-normal">
-                  Laboratory sessions represent one of the most exciting aspects of student life at Mount Valley. Wearing their laboratory attire, students collaborate at black-granite island benches to examine biological specimens, handle apparatus, and record accurate measurements.
+                  Laboratory sessions represent one of the most exciting aspects of student life at Mount Valley. Wearing their school attire, students collaborate at black-granite island benches to examine biological specimens, handle apparatus, and record accurate measurements.
                 </p>
 
                 <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-8">
@@ -317,6 +329,82 @@ export default function CampusLife() {
           </div>
         </div>
       </section>
+
+      {/* Fullscreen Lightbox Modal */}
+      <AnimatePresence>
+        {fullscreenIndex !== null && activeLab && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/95 backdrop-blur-md p-4 sm:p-6"
+            onClick={() => setFullscreenIndex(null)}
+          >
+            <button
+              onClick={() => setFullscreenIndex(null)}
+              className="absolute top-5 right-5 sm:top-7 sm:right-7 z-50 p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors focus:outline-none"
+              aria-label="Close Fullscreen View"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            <button
+              onClick={handlePrev}
+              className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-brand-500 text-white transition-all duration-200 focus:outline-none"
+              aria-label="Previous Laboratory"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+
+            <button
+              onClick={handleNext}
+              className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-brand-500 text-white transition-all duration-200 focus:outline-none"
+              aria-label="Next Laboratory"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+
+            <div
+              className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <motion.div
+                key={activeLab.discipline}
+                initial={{ scale: 0.96, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.96, opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                className="relative rounded-2xl overflow-hidden shadow-2xl bg-black max-h-[70vh] flex items-center justify-center border border-slate-800"
+              >
+                <img
+                  src={activeLab.src}
+                  alt={activeLab.alt}
+                  className="max-h-[70vh] w-auto max-w-full object-contain"
+                />
+              </motion.div>
+
+              <div className="mt-5 text-center text-white max-w-2xl px-4">
+                <div className="flex items-center justify-center gap-3 mb-2">
+                  <span className="text-xs uppercase tracking-widest font-semibold text-brand-400">
+                    {activeLab.badge}
+                  </span>
+                  <span className="text-slate-500">•</span>
+                  <span className="text-xs text-slate-400">
+                    Laboratory {fullscreenIndex + 1} of {laboratoryDisciplines.length}
+                  </span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+                  {activeLab.title}
+                </h3>
+                <p className="text-sm text-slate-300 leading-relaxed font-normal">
+                  {activeLab.description}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Admissions Call to Action */}
       <AdmissionsCTA />

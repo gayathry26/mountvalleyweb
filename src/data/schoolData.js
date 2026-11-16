@@ -50,35 +50,80 @@ export const officialImages = {
     category: "Academics",
     description: "Spacious, well-ventilated classroom with dedicated student workspaces and illustrative wall charts."
   },
+  physicsLab: {
+    src: "/images/physics-laboratory.jpg",
+    alt: "Physics experimental laboratory at Mount Valley Public School",
+    title: "Physics Laboratory",
+    discipline: "Physics",
+    badge: "Physical Sciences",
+    category: "Laboratories",
+    description: "Dedicated experimental benches fitted with stabilized power units, rheostats, potentiometers, resistance boxes, and optical apparatus.",
+    equipment: [
+      "Regulated electrical power benches",
+      "Rheostats & resistance boxes",
+      "Optical & measurement benches",
+      "Galvanometers & electrical meters"
+    ]
+  },
+  chemistryLab: {
+    src: "/images/chemistry-laboratory.jpg",
+    alt: "Chemistry laboratory with acid-resistant workstations and reagents",
+    title: "Chemistry Laboratory",
+    discipline: "Chemistry",
+    badge: "Chemical Sciences",
+    category: "Laboratories",
+    description: "Acid-resistant granite workstations fitted with dedicated reagent shelves, burettes, titration stands, and chemical glassware for qualitative analysis.",
+    equipment: [
+      "Granite workstation benches",
+      "Chemical glassware & reagent shelves",
+      "Burette & titration stands",
+      "Safety wash stations"
+    ]
+  },
+  biologyLab: {
+    src: "/images/biology-laboratory.jpg",
+    alt: "Biology laboratory with compound microscopes and preserved specimens",
+    title: "Biology Laboratory",
+    discipline: "Biology",
+    badge: "Life Sciences",
+    category: "Laboratories",
+    description: "Spacious observation benches equipped with compound microscopes, preserved biological specimens, petri dishes, and anatomical charts.",
+    equipment: [
+      "Compound microscopes",
+      "Preserved biological specimen jars",
+      "Petri dishes & glass slides",
+      "Anatomical charts & models"
+    ]
+  },
+  // Backward compatibility alias
   scienceLabInterior: {
-    src: "/images/science-lab-interior.jpg",
-    alt: "Science laboratory interior and workstations",
-    title: "Science & Chemistry Laboratory",
-    category: "Infrastructure",
+    src: "/images/chemistry-laboratory.jpg",
+    alt: "Chemistry laboratory workstations and reagents",
+    title: "Chemistry Laboratory",
+    category: "Laboratories",
     description: "Equipped laboratory with modern granite counters, reagent shelves, and apparatus."
   },
   scienceLaboratory: {
     src: "/images/science-laboratory.jpg",
     alt: "Science laboratory facilities with faculty",
     title: "Dedicated Science Facilities",
-    category: "Infrastructure",
-    description: "Fully organized laboratory environment designed for experimental scientific inquiry."
-  },
-  physicsLab: {
-    src: "/images/physics-laboratory.jpg",
-    alt: "Physics laboratory with experimental apparatus and faculty",
-    title: "Physics Experimental Lab",
-    category: "Infrastructure",
-    description: "Specialized physics lab tables with electrical benches, rheostats, and optical apparatus."
+    category: "Laboratories",
+    description: "Organized faculty-monitored laboratory environment designed for experimental scientific inquiry."
   },
   studentsLab: {
-    src: "/images/students-laboratory.jpg",
-    alt: "Students actively engaged in laboratory experiments",
-    title: "Practical Learning in Action",
+    src: "/images/biology-laboratory.jpg",
+    alt: "Students actively engaged in biology laboratory experiments",
+    title: "Biology Practical Sessions",
     category: "Academics",
     description: "Students in uniform actively recording observations and conducting experiments with faculty guidance."
   }
 };
+
+export const laboratoryDisciplines = [
+  officialImages.physicsLab,
+  officialImages.chemistryLab,
+  officialImages.biologyLab,
+];
 
 export const galleryItems = [
   {
@@ -98,18 +143,18 @@ export const galleryItems = [
   },
   {
     id: 4,
-    ...officialImages.studentsLab,
-    tag: "Student Laboratory Sessions"
+    ...officialImages.physicsLab,
+    tag: "Physics Laboratory"
   },
   {
     id: 5,
-    ...officialImages.scienceLabInterior,
-    tag: "Chemistry & Science Facilities"
+    ...officialImages.chemistryLab,
+    tag: "Chemistry Laboratory"
   },
   {
     id: 6,
-    ...officialImages.physicsLab,
-    tag: "Physics Laboratory"
+    ...officialImages.biologyLab,
+    tag: "Biology Laboratory"
   },
   {
     id: 7,
@@ -140,4 +185,3 @@ export const corePillars = [
     icon: "ShieldCheck"
   }
 ];
-

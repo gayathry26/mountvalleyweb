@@ -10,29 +10,31 @@ export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [activeCategory, setActiveCategory] = useState('All');
 
-  const categories = ['All', 'Campus', 'Academics', 'Infrastructure'];
+  const categories = ['All', 'Laboratories', 'Campus', 'Academics'];
 
   const filteredItems = activeCategory === 'All'
     ? galleryItems
     : galleryItems.filter(item => item.category === activeCategory);
 
-  const currentIndex = selectedImage ? galleryItems.findIndex(item => item.id === selectedImage.id) : -1;
+  const currentIndex = selectedImage ? filteredItems.findIndex(item => item.id === selectedImage.id) : -1;
 
   const handlePrev = useCallback(() => {
+    if (filteredItems.length === 0) return;
     if (currentIndex > 0) {
-      setSelectedImage(galleryItems[currentIndex - 1]);
+      setSelectedImage(filteredItems[currentIndex - 1]);
     } else {
-      setSelectedImage(galleryItems[galleryItems.length - 1]);
+      setSelectedImage(filteredItems[filteredItems.length - 1]);
     }
-  }, [currentIndex]);
+  }, [currentIndex, filteredItems]);
 
   const handleNext = useCallback(() => {
-    if (currentIndex < galleryItems.length - 1) {
-      setSelectedImage(galleryItems[currentIndex + 1]);
+    if (filteredItems.length === 0) return;
+    if (currentIndex < filteredItems.length - 1) {
+      setSelectedImage(filteredItems[currentIndex + 1]);
     } else {
-      setSelectedImage(galleryItems[0]);
+      setSelectedImage(filteredItems[0]);
     }
-  }, [currentIndex]);
+  }, [currentIndex, filteredItems]);
 
   // Keyboard navigation for Lightbox
   useEffect(() => {
@@ -220,7 +222,7 @@ export default function Gallery() {
                   </span>
                   <span className="text-slate-500">•</span>
                   <span className="text-xs text-slate-400">
-                    Image {currentIndex + 1} of {galleryItems.length}
+                    Image {currentIndex + 1} of {filteredItems.length}
                   </span>
                 </div>
                 <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">
